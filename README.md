@@ -8,7 +8,9 @@ buffer, signed or unsigned data and has tests.
 Derived from the sample CRC implementation in the PNG specification: http://www.w3.org/TR/PNG/#D-CRCAppendix
 
 # install
-`npm install buffer-crc32`
+```
+npm install buffer-crc32
+```
 
 # example
 ```js
