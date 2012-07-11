@@ -10,10 +10,12 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "tap tests/*.test.js"
+    "test": "./node_modules/.bin/tap tests/*.test.js"
   },
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "tap": "~0.2.5"
+  },
   "optionalDependencies": {},
   "engines": {
     "node": "*"
