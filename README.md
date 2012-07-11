@@ -16,7 +16,7 @@ npm install buffer-crc32
 ```js
 var crc32 = require('buffer-crc32');
 // works with buffers
-var buf = Buffer([[0x00, 0x73, 0x75, 0x70, 0x20, 0x62, 0x72, 0x6f, 0x00])
+var buf = Buffer([0x00, 0x73, 0x75, 0x70, 0x20, 0x62, 0x72, 0x6f, 0x00])
 crc32(buf) // -> <Buffer 94 5a ab 4a>
 
 // has convenience methods for getting signed or unsigned ints
@@ -31,3 +31,7 @@ crc32('自動販売機') // -> <Buffer cb 03 1a c5>
 # tests
 This was tested against the output of zlib's crc32 method. You can run
 the tests with`npm test` (requires tap)
+
+# see also
+https://github.com/alexgorbatchev/node-crc, `crc.buffer.crc32` also
+supports buffer inputs and return unsigned ints (thanks @tjholowaychuk).
