@@ -75,10 +75,10 @@ function crc32() {
   return bufferizeInt(_crc32.apply(null, arguments));
 }
 crc32.signed = function () {
-  return _crc32.apply(null, arguments)
+  return _crc32.apply(null, arguments);
 };
 crc32.unsigned = function () {
   return crc32.apply(null, arguments).readUInt32BE(0);
-}
+};
 
 module.exports = crc32;
