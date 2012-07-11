@@ -1,4 +1,7 @@
 # buffer-crc32
+
+[![Build Status](https://secure.travis-ci.org/brianloveswords/buffer-crc32.png?branch=master)](http://travis-ci.org/brianloveswords/buffer-crc32)
+
 crc32 that works with binary data and fancy character sets, outputs
 buffer, signed or unsigned data and has tests.
 
