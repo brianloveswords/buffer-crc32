@@ -35,3 +35,6 @@ the tests with`npm test` (requires tap)
 # see also
 https://github.com/alexgorbatchev/node-crc, `crc.buffer.crc32` also
 supports buffer inputs and return unsigned ints (thanks @tjholowaychuk).
+
+# license
+MIT/X11
