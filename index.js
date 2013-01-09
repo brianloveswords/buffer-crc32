@@ -78,7 +78,7 @@ crc32.signed = function () {
   return _crc32.apply(null, arguments);
 };
 crc32.unsigned = function () {
-  return crc32.apply(null, arguments).readUInt32BE(0);
+  return _crc32.apply(null, arguments) >>> 0;
 };
 
 module.exports = crc32;
