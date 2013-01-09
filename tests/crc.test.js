@@ -36,14 +36,14 @@ test('casts to buffer if necessary', function (t) {
   t.end();
 });
 
-test('can do unsigned', function (t) {
+test('can do signed', function (t) {
   var input = 'ham sandwich';
   var expected = -1891873021;
   t.same(crc32.signed(input), expected);
   t.end();
 });
 
-test('can do signed', function (t) {
+test('can do unsigned', function (t) {
   var input = 'bear sandwich';
   var expected = 3711466352;
   t.same(crc32.unsigned(input), expected);
