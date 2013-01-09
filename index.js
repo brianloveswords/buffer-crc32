@@ -61,14 +61,18 @@ function bufferizeInt(num) {
   return tmp;
 }
 
-function _crc32(buf) {
-  if (!Buffer.isBuffer(buf))
+function _crc32(buf, previous) {
+  if (!Buffer.isBuffer(buf)) {
     buf = Buffer(buf);
-  var crc = 0xffffffff;
+  }
+  if (Buffer.isBuffer(previous)) {
+    previous = previous.readUInt32BE(0);
+  }
+  var crc = ~~previous ^ -1;
   for (var n = 0; n < buf.length; n++) {
     crc = CRC_TABLE[(crc ^ buf[n]) & 0xff] ^ (crc >>> 8);
   }
-  return (crc ^ 0xffffffff);
+  return (crc ^ -1);
 }
 
 function crc32() {
