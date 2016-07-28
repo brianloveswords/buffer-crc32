@@ -32,5 +32,8 @@
   "engines": {
     "node": "*"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ]
 }
