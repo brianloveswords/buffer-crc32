@@ -2,7 +2,7 @@
   "author": "Brian J. Brennan <brianloveswords@gmail.com> (http://bjb.io)",
   "name": "buffer-crc32",
   "description": "A pure javascript CRC32 algorithm that plays nice with binary data",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "licenses": [
     {
       "type": "MIT",
