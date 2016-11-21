@@ -55,8 +55,9 @@ var CRC_TABLE = [
   0x2d02ef8d
 ];
 
-if (typeof Int32Array !== 'undefined')
+if (typeof Int32Array !== 'undefined') {
   CRC_TABLE = new Int32Array(CRC_TABLE);
+}
 
 function bufferizeInt(num) {
   var tmp = Buffer.alloc(4);
@@ -66,7 +67,15 @@ function bufferizeInt(num) {
 
 function _crc32(buf, previous) {
   if (!Buffer.isBuffer(buf)) {
-    buf = Buffer.from(buf);
+    if (typeof buf === "number") {
+      buf = Buffer.alloc(buf);
+    }
+    else if (typeof buf === "string") {
+      buf = Buffer.from(buf);
+    }
+    else {
+      throw new Error("input must be a number or a string, received " + typeof buf);
+    }
   }
   if (Buffer.isBuffer(previous)) {
     previous = previous.readUInt32BE(0);

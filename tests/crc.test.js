@@ -76,6 +76,16 @@ test('can do signed in append mode', function (t) {
   t.end();
 });
 
+test('make sure crc32 can accept integers as first arg ', function (t) {
+  try {
+    t.same(crc32(0), new Buffer([0x00, 0x00, 0x00, 0x00]));
+  } catch (e) {
+    t.fail("should be able to accept integer");
+  } finally {
+    t.end();
+  }
+});
+
 test('can do unsigned in append mode', function (t) {
   var input1 = 'bear san';
   var input2 = 'dwich';
