@@ -86,6 +86,17 @@ test('make sure crc32 can accept integers as first arg ', function (t) {
   }
 });
 
+test('make sure crc32 throws on bad input', function (t) {
+  try {
+    crc32({});
+    t.fail("should fail on garbage input");
+  } catch (e) {
+    t.ok("should pass");
+  } finally {
+    t.end();
+  }
+});
+
 test('can do unsigned in append mode', function (t) {
   var input1 = 'bear san';
   var input2 = 'dwich';

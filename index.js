@@ -77,6 +77,7 @@ function ensureBuffer(input) {
     }
   }
 
+  // Don't need to typecheck here because `new Buffer` does its own type checking
   else {
     return new Buffer(input);
   }
