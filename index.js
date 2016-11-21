@@ -59,14 +59,14 @@ if (typeof Int32Array !== 'undefined')
   CRC_TABLE = new Int32Array(CRC_TABLE);
 
 function bufferizeInt(num) {
-  var tmp = new Buffer(4);
+  var tmp = Buffer.alloc(4);
   tmp.writeInt32BE(num, 0);
   return tmp;
 }
 
 function _crc32(buf, previous) {
   if (!Buffer.isBuffer(buf)) {
-    buf = new Buffer(buf);
+    buf = Buffer.from(buf);
   }
   if (Buffer.isBuffer(previous)) {
     previous = previous.readUInt32BE(0);
