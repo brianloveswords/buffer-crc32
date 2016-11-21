@@ -66,7 +66,7 @@ function bufferizeInt(num) {
 
 function _crc32(buf, previous) {
   if (!Buffer.isBuffer(buf)) {
-    buf = Buffer(buf);
+    buf = new Buffer(buf);
   }
   if (Buffer.isBuffer(previous)) {
     previous = previous.readUInt32BE(0);
