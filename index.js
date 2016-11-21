@@ -72,7 +72,8 @@ function ensureBuffer(input) {
       return Buffer.from(input);
     }
     else {
-      throw new Error("input must be a number or a string, received " + typeof input);
+      throw new Error("input must be buffer, number, or string, received " +
+                      typeof input);
     }
   }
 
