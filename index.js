@@ -64,22 +64,19 @@ function ensureBuffer(input) {
     return input;
   }
 
-  if (typeof Buffer.alloc === "function" && typeof Buffer.from === "function") {
-    if (typeof input === "number") {
-      return Buffer.alloc(input);
-    }
-    else if (typeof input === "string") {
-      return Buffer.from(input);
-    }
-    else {
-      throw new Error("input must be buffer, number, or string, received " +
-                      typeof input);
-    }
-  }
+  var hasNewBufferAPI =
+      typeof Buffer.alloc === "function" &&
+      typeof Buffer.from === "function";
 
-  // Don't need to typecheck here because `new Buffer` does its own type checking
+  if (typeof input === "number") {
+    return hasNewBufferAPI ? Buffer.alloc(input) : new Buffer(input);
+  }
+  else if (typeof input === "string") {
+    return hasNewBufferAPI ? Buffer.from(input) : new Buffer(input);
+  }
   else {
-    return new Buffer(input);
+    throw new Error("input must be buffer, number, or string, received " +
+                    typeof input);
   }
 }
 
