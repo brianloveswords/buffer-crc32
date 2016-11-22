@@ -30,7 +30,7 @@
   },
   "optionalDependencies": {},
   "engines": {
-    "node": ">=6.0.0"
+    "node": "*"
   },
   "license": "MIT",
   "files": [
