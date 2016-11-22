@@ -59,6 +59,12 @@ if (typeof Int32Array !== 'undefined') {
   CRC_TABLE = new Int32Array(CRC_TABLE);
 }
 
+function newEmptyBuffer(length) {
+  var buffer = new Buffer(length);
+  buffer.fill(0x00);
+  return buffer;
+}
+
 function ensureBuffer(input) {
   if (Buffer.isBuffer(input)) {
     return input;
@@ -69,7 +75,7 @@ function ensureBuffer(input) {
       typeof Buffer.from === "function";
 
   if (typeof input === "number") {
-    return hasNewBufferAPI ? Buffer.alloc(input) : new Buffer(input);
+    return hasNewBufferAPI ? Buffer.alloc(input) : newEmptyBuffer(input);
   }
   else if (typeof input === "string") {
     return hasNewBufferAPI ? Buffer.from(input) : new Buffer(input);
