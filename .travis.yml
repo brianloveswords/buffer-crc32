@@ -1,9 +1,12 @@
 language: node_js
+arch:
+  - amd64
+  - ppc64le
 node_js:
-  - 0.10
-  - 0.12
-  - 4
-  - 6
+  - 10
+  - 12
+  - 14
+  - 8
 notifications:
   email:
     recipients:
