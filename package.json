@@ -22,13 +22,12 @@
   },
   "scripts": {
     "test": "tap tests/*.test.js --reporter classic",
-    "build": "unbuild",
+    "build": "npx unbuild@2.0.0",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {},
   "devDependencies": {
-    "tap": "~11.1.5",
-    "unbuild": "^2.0.0"
+    "tap": "~11.1.5"
   },
   "optionalDependencies": {},
   "engines": {
