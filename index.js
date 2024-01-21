@@ -55,11 +55,15 @@ var CRC_TABLE = [
   0x2d02ef8d
 ];
 
+var hasNewBufferAPI =
+    typeof Buffer.alloc === "function" &&
+    typeof Buffer.from === "function";
+
 if (typeof Int32Array !== 'undefined') {
   CRC_TABLE = new Int32Array(CRC_TABLE);
 }
 
-function newEmptyBuffer(length) {
+function newEmptyBufferLegacy(length) {
   var buffer = new Buffer(length);
   buffer.fill(0x00);
   return buffer;
@@ -70,12 +74,8 @@ function ensureBuffer(input) {
     return input;
   }
 
-  var hasNewBufferAPI =
-      typeof Buffer.alloc === "function" &&
-      typeof Buffer.from === "function";
-
   if (typeof input === "number") {
-    return hasNewBufferAPI ? Buffer.alloc(input) : newEmptyBuffer(input);
+    return hasNewBufferAPI ? Buffer.alloc(input) : newEmptyBufferLegacy(input);
   }
   else if (typeof input === "string") {
     return hasNewBufferAPI ? Buffer.from(input) : new Buffer(input);
