@@ -22,16 +22,16 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/tap tests/*.test.js"
+    "test": "tap tests/*.test.js --reporter classic"
   },
   "type": "commonjs",
   "dependencies": {},
   "devDependencies": {
-    "tap": "~0.2.5"
+    "tap": "~13.1.11"
   },
   "optionalDependencies": {},
   "engines": {
-    "node": "*"
+    "node": ">=8.0.0"
   },
   "license": "MIT",
   "files": [

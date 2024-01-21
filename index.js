@@ -1,6 +1,4 @@
-var Buffer = require('buffer').Buffer;
-
-var CRC_TABLE = [
+const CRC_TABLE = new Int32Array([
   0x00000000, 0x77073096, 0xee0e612c, 0x990951ba, 0x076dc419,
   0x706af48f, 0xe963a535, 0x9e6495a3, 0x0edb8832, 0x79dcb8a4,
   0xe0d5e91e, 0x97d2d988, 0x09b64c2b, 0x7eb17cbd, 0xe7b82d07,
@@ -53,21 +51,7 @@ var CRC_TABLE = [
   0xcdd70693, 0x54de5729, 0x23d967bf, 0xb3667a2e, 0xc4614ab8,
   0x5d681b02, 0x2a6f2b94, 0xb40bbe37, 0xc30c8ea1, 0x5a05df1b,
   0x2d02ef8d
-];
-
-var hasNewBufferAPI =
-    typeof Buffer.alloc === "function" &&
-    typeof Buffer.from === "function";
-
-if (typeof Int32Array !== 'undefined') {
-  CRC_TABLE = new Int32Array(CRC_TABLE);
-}
-
-function newEmptyBufferLegacy(length) {
-  var buffer = new Buffer(length);
-  buffer.fill(0x00);
-  return buffer;
-}
+])
 
 function ensureBuffer(input) {
   if (Buffer.isBuffer(input)) {
@@ -75,10 +59,10 @@ function ensureBuffer(input) {
   }
 
   if (typeof input === "number") {
-    return hasNewBufferAPI ? Buffer.alloc(input) : newEmptyBufferLegacy(input);
+    return Buffer.alloc(input);
   }
   else if (typeof input === "string") {
-    return hasNewBufferAPI ? Buffer.from(input) : new Buffer(input);
+    return Buffer.from(input);
   }
   else {
     throw new Error("input must be buffer, number, or string, received " +
@@ -87,7 +71,7 @@ function ensureBuffer(input) {
 }
 
 function bufferizeInt(num) {
-  var tmp = ensureBuffer(4);
+  const tmp = ensureBuffer(4);
   tmp.writeInt32BE(num, 0);
   return tmp;
 }
@@ -97,7 +81,7 @@ function _crc32(buf, previous) {
   if (Buffer.isBuffer(previous)) {
     previous = previous.readUInt32BE(0);
   }
-  var crc = ~~previous ^ -1;
+  let crc = ~~previous ^ -1;
   for (var n = 0; n < buf.length; n++) {
     crc = CRC_TABLE[(crc ^ buf[n]) & 0xff] ^ (crc >>> 8);
   }

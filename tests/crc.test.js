@@ -1,5 +1,5 @@
-var crc32 = require('..');
-var test = require('tap').test;
+const crc32 = require('..');
+const test = require('tap').test;
 
 test('simple crc32 is no problem', function (t) {
   var input = new Buffer('hey sup bros');
