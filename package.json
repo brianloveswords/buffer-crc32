@@ -20,21 +20,30 @@
     "type": "git",
     "url": "git://github.com/brianloveswords/buffer-crc32.git"
   },
-  "main": "index.js",
   "scripts": {
-    "test": "tap tests/*.test.js --reporter classic"
+    "test": "tap tests/*.test.js --reporter classic",
+    "build": "unbuild",
+    "prepublishOnly": "npm run build"
   },
-  "type": "commonjs",
   "dependencies": {},
   "devDependencies": {
-    "tap": "~11.1.5"
+    "tap": "~11.1.5",
+    "unbuild": "^2.0.0"
   },
   "optionalDependencies": {},
   "engines": {
     "node": ">=8.0.0"
   },
   "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
   "files": [
-    "index.js"
+    "dist"
   ]
 }
