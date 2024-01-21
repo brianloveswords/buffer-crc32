@@ -1,4 +1,4 @@
-const crc32 = require('../index.js');
+const crc32 = require('..');
 const test = require('tap').test;
 
 test('simple crc32 is no problem', function (t) {
