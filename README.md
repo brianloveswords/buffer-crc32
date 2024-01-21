@@ -7,6 +7,8 @@ buffer, signed or unsigned data and has tests.
 
 Derived from the sample CRC implementation in the PNG specification: http://www.w3.org/TR/PNG/#D-CRCAppendix
 
+This package requires Node 8+ to work.
+
 # install
 ```
 npm install buffer-crc32
