@@ -50,9 +50,14 @@ test('can do unsigned', function (t) {
   t.end();
 });
 
-
 test('simple crc32 in append mode', function (t) {
-  var input = [Buffer.from('hey'), Buffer.from(' '), Buffer.from('sup'), Buffer.from(' '), Buffer.from('bros')];
+  var input = [
+    Buffer.from('hey'),
+    Buffer.from(' '),
+    Buffer.from('sup'),
+    Buffer.from(' '),
+    Buffer.from('bros'),
+  ];
   var expected = Buffer.from([0x47, 0xfa, 0x55, 0x70]);
   for (var crc = 0, i = 0; i < input.length; i++) {
     crc = crc32(input[i], crc);
@@ -60,7 +65,6 @@ test('simple crc32 in append mode', function (t) {
   t.same(crc, expected);
   t.end();
 });
-
 
 test('can do signed in append mode', function (t) {
   var input1 = 'ham';
@@ -80,7 +84,7 @@ test('make sure crc32 can accept integers as first arg ', function (t) {
   try {
     t.same(crc32(0), Buffer.from([0x00, 0x00, 0x00, 0x00]));
   } catch (e) {
-    t.fail("should be able to accept integer");
+    t.fail('should be able to accept integer');
   } finally {
     t.end();
   }
@@ -89,9 +93,9 @@ test('make sure crc32 can accept integers as first arg ', function (t) {
 test('make sure crc32 throws on bad input', function (t) {
   try {
     crc32({});
-    t.fail("should fail on garbage input");
+    t.fail('should fail on garbage input');
   } catch (e) {
-    t.ok("should pass");
+    t.ok('should pass');
   } finally {
     t.end();
   }

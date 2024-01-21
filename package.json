@@ -22,11 +22,13 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "tap tests/*.test.js --reporter classic"
+    "test": "tap tests/*.test.js --reporter classic",
+    "format": "prettier --write --log-level warn \"**/*.{json,md,js}\""
   },
   "type": "commonjs",
   "dependencies": {},
   "devDependencies": {
+    "prettier": "^3.2.4",
     "tap": "~11.1.5"
   },
   "optionalDependencies": {},
