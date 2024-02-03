@@ -2,7 +2,7 @@
   "author": "Brian J. Brennan <brianloveswords@gmail.com>",
   "name": "buffer-crc32",
   "description": "A pure javascript CRC32 algorithm that plays nice with binary data",
-  "version": "0.2.13",
+  "version": "1.0.0-RC9",
   "licenses": [
     {
       "type": "MIT",
@@ -22,7 +22,7 @@
   },
   "scripts": {
     "test": "tap tests/*.test.js --reporter classic",
-    "build": "npx unbuild@2.0.0",
+    "build": "npx unbuild@2.0.0 && npx cpy-cli index.d.ts dist --rename=index.d.cts && npx cpy-cli index.d.ts dist --rename=index.d.mts",
     "prepublishOnly": "npm run build",
     "format": "prettier --write --log-level warn \"**/*.{json,md,js}\""
   },
@@ -36,6 +36,7 @@
     "node": ">=8.0.0"
   },
   "license": "MIT",
+  "type": "commonjs",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -43,7 +44,11 @@
     }
   },
   "main": "./dist/index.cjs",
+  "types": "./index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts",
+    "LICENSE",
+    "README.md"
   ]
 }
