@@ -20,12 +20,12 @@
     "type": "git",
     "url": "git://github.com/brianloveswords/buffer-crc32.git"
   },
-  "main": "index.js",
   "scripts": {
     "test": "tap tests/*.test.js --reporter classic",
+    "build": "npx unbuild@2.0.0 && npx cpy-cli index.d.ts dist --rename=index.d.cts && npx cpy-cli index.d.ts dist --rename=index.d.mts",
+    "prepublishOnly": "npm run build",
     "format": "prettier --write --log-level warn \"**/*.{json,md,js}\""
   },
-  "type": "commonjs",
   "dependencies": {},
   "devDependencies": {
     "prettier": "^3.2.4",
@@ -36,7 +36,19 @@
     "node": ">=8.0.0"
   },
   "license": "MIT",
+  "type": "commonjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "types": "./index.d.ts",
   "files": [
-    "index.js"
+    "dist",
+    "index.d.ts",
+    "LICENSE",
+    "README.md"
   ]
 }
