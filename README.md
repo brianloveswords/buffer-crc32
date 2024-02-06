@@ -1,7 +1,7 @@
 # buffer-crc32
 
 [![NPM Version](https://img.shields.io/npm/v/buffer-crc32.svg)](https://npmjs.org/package/buffer-crc32)
-[![Build Status](https://github.com/brianloveswords/buffer-crc32/workflows/ci/badge.svg)](https://github.com/brianloveswords/buffer-crc32/actions)
+[![Build Status](https://github.com/brianloveswords/buffer-crc32/actions/workflows/ci.yml/badge.svg)](https://github.com/brianloveswords/buffer-crc32/actions/workflows/ci.yml)
 
 crc32 that works with binary data and fancy character sets, outputs
 buffer, signed or unsigned data and has tests.
